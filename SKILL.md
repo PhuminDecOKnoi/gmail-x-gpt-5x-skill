@@ -1,7 +1,6 @@
 ---
 name: gmail-x-gpt-5x-skill
 description: Gmail triage and cleanup skill for GPT 5.x. Use for classifying Inbox messages, applying Gmail labels, checking Spam, reviewing contract-related messages, and safely cleaning Inbox by ranked sender. Prioritizes non-destructive operations unless explicit user authorization is given.
-version: 1.1.0
 ---
 
 # Gmail X GPT 5.x SKILL
@@ -56,6 +55,14 @@ Every prompt in this repository should include:
 8. Verification.
 9. Fallback or error handling for incomplete Gmail results.
 
+## Sub-Skill Registry
+
+Use sub-skills when a workflow needs more precise operational control than a prompt alone.
+
+| ID | Sub-skill | Use when |
+|---|---|---|
+| `id01` | [skills/id01-skill-email-sender-cleanup/SKILL.md](skills/id01-skill-email-sender-cleanup/SKILL.md) | The user asks to rank Inbox senders, keep selected rank numbers, and move all other Inbox messages to Trash |
+
 ## Standard Labels
 
 Use the label taxonomy in [docs/label-taxonomy.md](docs/label-taxonomy.md).
@@ -105,6 +112,8 @@ Rank numbers are valid only for the current frozen run. Do not reuse rank number
 ## Workflow C: Cleanup By Kept Sender Ranks
 
 Use when the user says to keep ranks such as `X Y Z` and delete the rest.
+
+Apply sub-skill `id01-skill-email-sender-cleanup` for this workflow.
 
 1. Run Workflow B.
 2. Freeze a ranked snapshot:
