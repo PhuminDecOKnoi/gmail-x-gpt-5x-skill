@@ -35,6 +35,7 @@ The repository is not an app. It is a professional prompt and workflow knowledge
 | Reusable Gmail prompt | `prompts/*.prompt.md` |
 | Operating rule or taxonomy | `docs/*.md` |
 | Example run | `examples/*.md` |
+| Workflow sub-skill | `skills/idNN-skill-domain-workflow/SKILL.md` |
 | Skill behavior | `SKILL.md` |
 | Repo overview | `README.md` |
 
