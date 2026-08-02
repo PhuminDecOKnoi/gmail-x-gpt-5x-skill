@@ -1,14 +1,14 @@
 ---
 name: gmail-x-gpt-5x-skill
 description: Gmail triage and cleanup skill for GPT 5.x. Use for classifying Inbox messages, applying Gmail labels, checking Spam, reviewing contract-related messages, and safely cleaning Inbox by ranked sender. Prioritizes non-destructive operations unless explicit user authorization is given.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Gmail X GPT 5.x SKILL
 
 ## Mission
 
-Help the user manage Gmail with GPT 5.x using a professional, auditable, and safe workflow.
+Help the user manage Gmail with GPT 5.x through a professional, auditable, and safe operating model.
 
 This skill supports:
 
@@ -19,9 +19,15 @@ This skill supports:
 - Safe cleanup by keeping selected sender ranks and moving other Inbox messages to Trash.
 - Contract, agreement, invoice, and service-term review.
 
+## Skill Boundary
+
+This is a Gmail workflow and Prompt-AI skill. It is not a Gmail settings manager, email marketing tool, or permanent deletion playbook.
+
+Use only connected Gmail data unless the user explicitly asks for external research. Do not infer private facts from outside the mailbox.
+
 ## Safety Boundary
 
-Default actions are read-only plus label application.
+Default actions are read-only plus label application when the user asks for classification or triage.
 
 Do not perform any of these actions unless the user explicitly authorizes the exact action:
 
@@ -35,6 +41,20 @@ Do not perform any of these actions unless the user explicitly authorizes the ex
 - unsubscribe.
 
 Permanent deletion is outside the default scope and requires separate explicit confirmation.
+
+## Standard Prompt Pattern
+
+Every prompt in this repository should include:
+
+1. Role.
+2. Objective.
+3. User input or variables.
+4. Source boundary.
+5. Workflow.
+6. Output contract.
+7. Hard constraints.
+8. Verification.
+9. Fallback or error handling for incomplete Gmail results.
 
 ## Standard Labels
 
@@ -50,7 +70,7 @@ The tool may not be able to set the visual label color. If so, create or apply t
 
 ## Workflow A: New Inbox Labeling
 
-Use when the user asks to check new messages since the previous run.
+Use when the user asks to check new messages since the previous run or asks for automatic classification of recent Inbox messages.
 
 1. Search for new Inbox messages using the best available previous-run boundary.
 2. If no durable previous-run state exists, use a conservative recent window such as `newer_than:1h`.
@@ -59,6 +79,15 @@ Use when the user asks to check new messages since the previous run.
 5. Check Gmail Spam separately and apply `00_SPAM-Review-Red` to Spam messages.
 6. Do not delete, archive, move, send, or mark read.
 7. Return a summary table by label count.
+
+Minimum output:
+
+| Field | Requirement |
+|---|---|
+| Inbox new messages | Count searched and count labeled |
+| Spam messages | Count searched and count labeled |
+| Label summary | Count by label |
+| Safety statement | Confirm no delete, move, archive, send, or read-status change |
 
 ## Workflow B: Inbox Sender Ranking
 
@@ -70,6 +99,8 @@ Use when the user asks to list senders in Inbox and count messages.
 4. Sort senders by count descending.
 5. Assign rank numbers from `1` to `N`.
 6. Return a table with rank, sender name, sender email, message count, and sample subjects.
+
+Rank numbers are valid only for the current frozen run. Do not reuse rank numbers across different runs.
 
 ## Workflow C: Cleanup By Kept Sender Ranks
 
@@ -86,6 +117,8 @@ Use when the user says to keep ranks such as `X Y Z` and delete the rest.
 5. Move only non-kept Inbox messages to Trash.
 6. Do not permanently delete.
 7. Re-scan Inbox and verify that only kept senders remain or explain exceptions.
+
+If the user only asks to "list" or "rank", stop after Workflow B. If the user asks to "delete the rest" but does not provide kept ranks, ask for the ranks before taking action.
 
 ## Workflow D: Contract Review
 
@@ -113,6 +146,17 @@ Separate results into:
 
 Do not delete or move messages during contract review unless separately authorized.
 
+## Fallback Rules
+
+If a Gmail search or write operation fails:
+
+1. Stop the operation.
+2. Report what was completed.
+3. Report what was not completed.
+4. Ask before retrying any destructive or state-changing action.
+
+If message results are incomplete or paginated, report the limitation before drawing final conclusions.
+
 ## Output Style
 
 Default language: Thai.
@@ -131,4 +175,3 @@ Before final response, verify:
 - Ranked sender cleanup uses a frozen snapshot.
 - Summary includes count of affected messages.
 - Limitations or tool constraints are clearly stated.
-
