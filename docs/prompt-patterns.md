@@ -38,6 +38,8 @@ Fallback / Error Handling
 
 - Use sender email address as the stable identity.
 - Use display name only as supporting context.
+- For Gmail category counts, prefer label/category metadata before reading individual messages.
+- Map Primary to `CATEGORY_PERSONAL`, Promotions to `CATEGORY_PROMOTIONS`, Social to `CATEGORY_SOCIAL`, Updates to `CATEGORY_UPDATES`, and Forums to `CATEGORY_FORUMS`.
 - Apply multiple labels when evidence supports multiple categories.
 - Use `99_Archive-LowPriority` only when no specific label fits.
 - Use Trash wording for deletion workflows.
@@ -62,4 +64,26 @@ Variables:
 Output:
 - Language: Thai
 - Format: Tables plus concise summary
+```
+
+## Category Count Prompt Pattern
+
+Use this read-only pattern when the user asks to show counts by Gmail category heading.
+
+```text
+/USE SKILL: gmail-x-gpt-5x-skill
+/USE PROMPT: prompts/gmail-category-count.prompt.md
+
+Task:
+ช่วยแสดง จำนวน รายการตาม หัวข้อ อีเมล [หัวข้อหมวด Gmail: Primary, Promotions, Social, Updates, Forums]
+
+Variables:
+- Gmail categories: Primary, Promotions, Social, Updates, Forums
+- Allowed action: read-only count
+- Count source: Gmail label/category metadata when available
+
+Output:
+- Language: Thai
+- Format: Table with Gmail heading, Gmail label, message count, unread count, and thread count
+- Verification: Include total counts, counting method, and safety statement
 ```
