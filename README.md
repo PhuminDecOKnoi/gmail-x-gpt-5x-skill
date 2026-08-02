@@ -2,7 +2,7 @@
 
 # Gmail X GPT 5.x SKILL
 
-[![Version](https://img.shields.io/badge/version-v1.3.0--readme--standard-38bdf8)](#version)
+[![Version](https://img.shields.io/badge/version-v1.3.1--dark--flow-38bdf8)](#version)
 [![Skill](https://img.shields.io/badge/skill-Gmail%20Workflow-34d399)](SKILL.md)
 [![Safety](https://img.shields.io/badge/safety-confirm%20before%20destructive%20actions-facc15)](docs/safety-rules.md)
 [![License](https://img.shields.io/badge/license-MIT-94a3b8)](LICENSE)
@@ -38,13 +38,7 @@ Core operating principle:
 
 ## Recommended Run Flow
 
-```mermaid
-flowchart TD
-    A["Define Gmail scope"] --> B["Classify or rank"]
-    B --> C["Freeze snapshot"]
-    C --> D["Confirm gated action"]
-    D --> E["Execute and verify"]
-```
+![Recommended Run Flow dark tone diagram](assets/recommended-run-flow-dark.svg)
 
 Use the flow this way:
 
@@ -123,9 +117,9 @@ The canonical labels are maintained in [docs/label-taxonomy.md](docs/label-taxon
 
 ## Version
 
-Current version: `v1.3.0-readme-standard`
+Current version: `v1.3.1-dark-flow`
 
 Latest update:
 
-- Rebuilt `README.md` as a professional repository landing page.
+- Replaced the `Recommended Run Flow` Mermaid block with a controlled Dark Tone SVG diagram.
 - Added a generated title banner at [assets/readme-title-banner.svg](assets/readme-title-banner.svg).
