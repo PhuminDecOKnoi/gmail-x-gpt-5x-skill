@@ -9,6 +9,8 @@ The default permission is:
 - inspect limited body context;
 - apply labels when the user asked for classification.
 
+Default permission does not include deleting, archiving, moving, sending, drafting, marking read/unread, unsubscribing, or changing Gmail settings.
+
 ## Actions Requiring Explicit Authorization
 
 These actions require explicit user authorization in the current conversation:
@@ -25,6 +27,17 @@ These actions require explicit user authorization in the current conversation:
 | Unsubscribe | Requires explicit authorization |
 | Change filters/settings/signature | Requires tool support and explicit authorization |
 
+## Authorization Standard
+
+Authorization must be current, specific, and tied to the action.
+
+| Weak instruction | Required handling |
+|---|---|
+| "ดูให้หน่อย" | Search or summarize only |
+| "จัดการให้หน่อย" | Ask what action is authorized before state-changing actions |
+| "ลบทิ้ง" | Treat as move to Trash unless permanent delete is explicitly stated |
+| "ลบถาวร" | Ask for separate confirmation before permanent deletion |
+
 ## Ranked Sender Cleanup Controls
 
 When deleting by ranked sender:
@@ -34,6 +47,16 @@ When deleting by ranked sender:
 3. Delete only by frozen sender email address and message IDs.
 4. Never rely only on display name.
 5. Verify final Inbox state.
+
+The frozen snapshot must contain:
+
+| Field | Purpose |
+|---|---|
+| Rank | User-facing selection number |
+| Sender email address | Stable sender identity |
+| Sender display name | Human-readable review |
+| Message IDs or thread IDs | Safe execution target |
+| Message count | Verification baseline |
 
 ## Error Handling
 
@@ -48,3 +71,13 @@ If any tool fails:
 
 Read only what is needed for the requested action. Do not expose full email bodies unless the user asks for a specific message summary or extraction.
 
+## Final Safety Statement
+
+After any Gmail operation, state whether any of these occurred:
+
+- delete or move to Trash;
+- archive or move out of Inbox;
+- send, reply, forward, or draft;
+- mark read or unread;
+- label application;
+- settings or filter change.
