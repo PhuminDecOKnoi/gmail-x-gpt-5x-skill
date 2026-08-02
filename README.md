@@ -2,7 +2,7 @@
 
 # Gmail X GPT 5.x SKILL
 
-[![Version](https://img.shields.io/badge/version-v1.3.2--skill--hub-38bdf8)](#version)
+[![Version](https://img.shields.io/badge/version-v1.3.3--author--license-38bdf8)](#version)
 [![Skill](https://img.shields.io/badge/skill-Gmail%20Workflow-34d399)](SKILL.md)
 [![Safety](https://img.shields.io/badge/safety-confirm%20before%20destructive%20actions-facc15)](docs/safety-rules.md)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-94a3b8)](LICENSE)
