@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.3.2 - 2026-08-02
+
+Expanded the README into a repository-level Skill Hub.
+
+Improved:
+
+- Added a detailed Skill Index linking the root skill and sub-skill `SKILL.md` files.
+- Added related skill file mapping for prompts, references, examples, docs, and repository governance.
+- Added a Skill Selection Guide that maps user requests to the correct skill, prompt, and safety rule.
+- Added copy-paste invocation patterns for Prompt-AI / SKILL runs.
+- Added detailed `id01` usage guidance for ranked sender cleanup.
+
 ## v1.3.1 - 2026-08-02
 
 Improved the README workflow visual.
