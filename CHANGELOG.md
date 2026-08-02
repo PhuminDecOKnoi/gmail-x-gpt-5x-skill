@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.3.4 - 2026-08-02
+
+Added a read-only Gmail category count Prompt-AI pattern.
+
+Added:
+
+- `prompts/gmail-category-count.prompt.md`.
+
+Improved:
+
+- Added Gmail category count to the README capability table and Skill Selection Guide.
+- Added Workflow 0 for Primary, Promotions, Social, Updates, and Forums counts.
+- Updated prompt-pattern documentation with category count mapping and invocation pattern.
+
 ## v1.3.3 - 2026-08-02
 
 Added author/compiler attribution and international non-commercial licensing.
