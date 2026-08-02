@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.0 - 2026-08-02
+
+Added the first modular sub-skill for ranked sender cleanup.
+
+Added:
+
+- `skills/id01-skill-email-sender-cleanup/SKILL.md`.
+- `skills/id01-skill-email-sender-cleanup/references/sender-ranking-standard.md`.
+- `skills/id01-skill-email-sender-cleanup/examples/keep-ranks-run.md`.
+
+Improved:
+
+- README sub-skill registry and repository tree.
+- Root `SKILL.md` sub-skill registry.
+- Workflow, operations, repository standard, prompt-pattern, and Copilot guidance for sub-skill controlled Gmail cleanup.
+- `prompts/gmail-ranked-sender-cleanup.prompt.md` with governing sub-skill reference.
+
 ## v1.1.0 - 2026-08-02
 
 Standardized repository structure and content.
