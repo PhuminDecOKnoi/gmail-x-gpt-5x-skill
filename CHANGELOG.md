@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.3.1 - 2026-08-02
+
+Improved the README workflow visual.
+
+Added:
+
+- `assets/recommended-run-flow-dark.svg`.
+
+Improved:
+
+- Replaced the `Recommended Run Flow` Mermaid block in `README.md` with a controlled Dark Tone SVG diagram for consistent GitHub rendering.
+
 ## v1.3.0 - 2026-08-02
 
 Rebuilt the repository front page and added visual title assets.
