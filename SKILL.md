@@ -14,6 +14,7 @@ This skill supports:
 - Inbox classification and labeling.
 - New-message labeling.
 - Gmail Spam review labeling.
+- Gmail category count for Primary, Promotions, Social, Updates, and Forums.
 - Sender ranking by Inbox count.
 - Safe cleanup by keeping selected sender ranks and moving other Inbox messages to Trash.
 - Contract, agreement, invoice, and service-term review.
@@ -62,6 +63,40 @@ Use sub-skills when a workflow needs more precise operational control than a pro
 | ID | Sub-skill | Use when |
 |---|---|---|
 | `id01` | [skills/id01-skill-email-sender-cleanup/SKILL.md](skills/id01-skill-email-sender-cleanup/SKILL.md) | The user asks to rank Inbox senders, keep selected rank numbers, and move all other Inbox messages to Trash |
+
+## Workflow 0: Gmail Category Count
+
+Use when the user asks to show counts by Gmail heading or category, especially:
+
+- Primary
+- Promotions
+- Social
+- Updates
+- Forums
+
+Use prompt:
+
+`prompts/gmail-category-count.prompt.md`
+
+1. Retrieve counts from Gmail category or label metadata when available.
+2. Map the visible Gmail heading to the Gmail system label:
+   - Primary: `CATEGORY_PERSONAL`
+   - Promotions: `CATEGORY_PROMOTIONS`
+   - Social: `CATEGORY_SOCIAL`
+   - Updates: `CATEGORY_UPDATES`
+   - Forums: `CATEGORY_FORUMS`
+3. Return total messages, unread messages, and thread counts when available.
+4. Do not open individual message content unless metadata counts are unavailable.
+5. Do not delete, archive, move, send, draft, or change read status.
+
+Minimum output:
+
+| Field | Requirement |
+|---|---|
+| Category summary | Count by Gmail heading and system label |
+| Total | Sum across the requested categories |
+| Counting method | Label metadata or search-based count |
+| Safety statement | Confirm read-only count and no mailbox state change |
 
 ## Standard Labels
 
