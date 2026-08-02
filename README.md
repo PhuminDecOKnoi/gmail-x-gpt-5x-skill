@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/version-v1.3.2--skill--hub-38bdf8)](#version)
 [![Skill](https://img.shields.io/badge/skill-Gmail%20Workflow-34d399)](SKILL.md)
 [![Safety](https://img.shields.io/badge/safety-confirm%20before%20destructive%20actions-facc15)](docs/safety-rules.md)
-[![License](https://img.shields.io/badge/license-MIT-94a3b8)](LICENSE)
+[![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-94a3b8)](LICENSE)
 
 Professional Prompt-AI and reusable SKILL framework for Gmail triage, label governance, ranked sender cleanup, and contract-related email review with GPT 5.x.
 
@@ -16,6 +16,24 @@ This repository converts recurring Gmail operations into auditable AI workflows.
 Core operating principle:
 
 > Search, classify, label, and verify first. Delete, move, send, archive, mark read, or change settings only when the current user instruction explicitly authorizes that exact action.
+
+## Author And License
+
+| Item | Detail |
+|---|---|
+| ผู้รวบรวม / ผู้เขียน | Phumin Decoknoi |
+| Compiled and authored by | Phumin Decoknoi |
+| AI-assisted drafting | OpenAI ChatGPT / Codex was used to help structure, draft, review, and standardize repository content |
+| License | [Creative Commons Attribution-NonCommercial 4.0 International](LICENSE) |
+| Commercial use | Not permitted without prior written permission from the author |
+| Attribution | Required for any permitted non-commercial sharing or adaptation |
+
+License summary:
+
+- You may share and adapt this repository for non-commercial purposes with proper attribution.
+- You may not sell, resell, package, sublicense commercially, or use this repository as part of paid commercial services without prior written permission.
+- The full controlling license is the official [CC BY-NC 4.0 International legal code](https://creativecommons.org/licenses/by-nc/4.0/legalcode).
+- This repository contains Prompt-AI patterns, SKILL files, examples, diagrams, and documentation intended for professional learning and controlled internal workflow design.
 
 ## What You Can Do
 
@@ -221,9 +239,9 @@ The canonical labels are maintained in [docs/label-taxonomy.md](docs/label-taxon
 
 ## Version
 
-Current version: `v1.3.2-skill-hub`
+Current version: `v1.3.3-author-license`
 
 Latest update:
 
-- Added a detailed README Skill Hub linking root skill, sub-skill, prompts, references, examples, and operating rules.
-- Added copy-paste invocation patterns and detailed `id01` usage guidance.
+- Added author/compiler attribution and international non-commercial license notice.
+- Replaced the previous MIT license badge with `CC BY-NC 4.0`.
