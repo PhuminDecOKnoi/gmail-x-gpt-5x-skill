@@ -18,10 +18,17 @@ This document defines the operational standard for running Gmail X GPT 5.x SKILL
 2. Search only the requested scope.
 3. Inspect minimum required context.
 4. Classify or rank according to the selected workflow.
-5. Apply labels only when allowed.
-6. Ask for confirmation before state-changing actions unless already explicitly authorized.
-7. Execute authorized write actions.
-8. Verify and report results.
+5. Apply the relevant sub-skill when the workflow requires stricter control.
+6. Apply labels only when allowed.
+7. Ask for confirmation before state-changing actions unless already explicitly authorized.
+8. Execute authorized write actions.
+9. Verify and report results.
+
+## Sub-Skill Controlled Operations
+
+| Operation | Sub-skill | Special control |
+|---|---|---|
+| Ranked sender cleanup | `skills/id01-skill-email-sender-cleanup/SKILL.md` | Freeze rank-to-sender-to-message mapping before moving non-kept Inbox messages to Trash |
 
 ## Previous-Run Boundary
 
