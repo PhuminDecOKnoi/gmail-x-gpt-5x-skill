@@ -2,7 +2,7 @@
 
 # Gmail X GPT 5.x SKILL
 
-[![Version](https://img.shields.io/badge/version-v1.3.3--author--license-38bdf8)](#version)
+[![Version](https://img.shields.io/badge/version-v1.3.4--gmail--category--count-38bdf8)](#version)
 [![Skill](https://img.shields.io/badge/skill-Gmail%20Workflow-34d399)](SKILL.md)
 [![Safety](https://img.shields.io/badge/safety-confirm%20before%20destructive%20actions-facc15)](docs/safety-rules.md)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-94a3b8)](LICENSE)
@@ -39,6 +39,7 @@ License summary:
 
 | Capability | Use when | Start here |
 |---|---|---|
+| Gmail category count | You want counts for Primary, Promotions, Social, Updates, and Forums | [gmail-category-count.prompt.md](prompts/gmail-category-count.prompt.md) |
 | New-message labeling | You want recent Inbox and Spam messages classified with existing labels | [gmail-new-message-auto-labeler.prompt.md](prompts/gmail-new-message-auto-labeler.prompt.md) |
 | Manual Inbox labeling | You want a selected Gmail scope classified by a standard taxonomy | [gmail-inbox-labeler.prompt.md](prompts/gmail-inbox-labeler.prompt.md) |
 | Ranked sender cleanup | You want to rank Inbox senders, keep selected ranks, and move the rest to Trash after confirmation | [id01-skill-email-sender-cleanup](skills/id01-skill-email-sender-cleanup/SKILL.md) |
@@ -79,6 +80,7 @@ Use this section as the main skill directory for the repository. Start with the 
 
 | User request | Use skill | Use prompt | Required safety rule |
 |---|---|---|---|
+| "ช่วยแสดงจำนวนรายการตามหัวข้ออีเมล Primary, Promotions, Social, Updates, Forums" | [SKILL.md](SKILL.md) | [gmail-category-count.prompt.md](prompts/gmail-category-count.prompt.md) | Read-only count; do not open unnecessary message content or change mailbox state |
 | "ตรวจเมลใหม่และติด label" | [SKILL.md](SKILL.md) | [gmail-new-message-auto-labeler.prompt.md](prompts/gmail-new-message-auto-labeler.prompt.md) | Apply labels only; do not delete, archive, send, or mark read |
 | "ช่วยจัดหมวดหมู่ Inbox" | [SKILL.md](SKILL.md) | [gmail-inbox-labeler.prompt.md](prompts/gmail-inbox-labeler.prompt.md) | Use the standard label taxonomy and report label counts |
 | "แยกผู้ส่งใน Inbox เรียงมากไปน้อย" | [SKILL.md](SKILL.md) | [gmail-ranked-sender-cleanup.prompt.md](prompts/gmail-ranked-sender-cleanup.prompt.md) | Ranking is read-only; do not move messages |
@@ -122,6 +124,29 @@ Output:
 ```
 
 For non-cleanup workflows, replace the sub-skill and prompt path with the matching file from the Skill Selection Guide.
+
+### Gmail Category Count Invocation
+
+Use this pattern when the user wants a read-only count by Gmail tab/category:
+
+```text
+/USE SKILL: gmail-x-gpt-5x-skill
+/USE ROOT SKILL: SKILL.md
+/USE PROMPT: prompts/gmail-category-count.prompt.md
+
+Task:
+ช่วยแสดง จำนวน รายการตาม หัวข้อ อีเมล
+
+Variables:
+- Gmail categories: Primary, Promotions, Social, Updates, Forums
+- Allowed action: read-only count
+- Count source: Gmail label/category metadata when available
+
+Output:
+- Language: Thai
+- Format: Table with Gmail heading, Gmail label, message count, unread count, and thread count
+- Verification: Include total counts and safety statement
+```
 
 ### Skill Operating Rules
 
@@ -239,9 +264,9 @@ The canonical labels are maintained in [docs/label-taxonomy.md](docs/label-taxon
 
 ## Version
 
-Current version: `v1.3.3-author-license`
+Current version: `v1.3.4-gmail-category-count`
 
 Latest update:
 
-- Added author/compiler attribution and international non-commercial license notice.
-- Replaced the previous MIT license badge with `CC BY-NC 4.0`.
+- Added a read-only Gmail category count Prompt-AI for Primary, Promotions, Social, Updates, and Forums.
+- Linked the new prompt from the README Skill Hub and selection guide.
