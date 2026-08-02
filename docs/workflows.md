@@ -8,7 +8,7 @@ This document defines standard Gmail workflows for this repository.
 |---|---|---|---|
 | New Message Labeling | "check new messages", "ตรวจเมลใหม่" | Apply labels only | `prompts/gmail-new-message-auto-labeler.prompt.md` |
 | Inbox Sender Ranking | "แยกผู้ส่งใน Inbox", "rank sender" | None | `prompts/gmail-ranked-sender-cleanup.prompt.md` |
-| Keep Selected Ranks | "เก็บลำดับ X Y Z นอกนั้นลบ" | Move non-kept Inbox messages to Trash after authorization | `prompts/gmail-ranked-sender-cleanup.prompt.md` |
+| Keep Selected Ranks | "เก็บลำดับ X Y Z นอกนั้นลบ" | Move non-kept Inbox messages to Trash after authorization | `skills/id01-skill-email-sender-cleanup/SKILL.md` and `prompts/gmail-ranked-sender-cleanup.prompt.md` |
 | Contract Review | "contract", "agreement", "สัญญา", "invoice" | None | `prompts/gmail-contract-review.prompt.md` |
 
 ## Workflow 1: New Message Labeling
@@ -63,6 +63,10 @@ Rules:
 Use this when the user says:
 
 > เก็บอีเมลในลำดับที่ X Y Z นอกนั้นให้ลบทิ้ง
+
+Use sub-skill:
+
+`skills/id01-skill-email-sender-cleanup/SKILL.md`
 
 Steps:
 
