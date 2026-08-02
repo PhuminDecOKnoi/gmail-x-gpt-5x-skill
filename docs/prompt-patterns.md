@@ -8,6 +8,7 @@ This repository uses a consistent Prompt-AI structure so Gmail workflows can be 
 Role
 Objective
 User Input Variables
+Sub-Skill / Prompt Link
 Source Boundary
 Gmail Scope
 Workflow
@@ -24,6 +25,7 @@ Fallback / Error Handling
 | Role | What the AI is responsible for |
 | Objective | The concrete outcome of the run |
 | User Input Variables | Scope, ranks, labels, time window, or other user-controlled values |
+| Sub-Skill / Prompt Link | The sub-skill or prompt path that governs this workflow |
 | Source Boundary | Gmail-only or approved source list |
 | Gmail Scope | Query such as `in:inbox`, `in:spam`, or `newer_than:1h` |
 | Workflow | Ordered observable steps |
@@ -45,6 +47,7 @@ Fallback / Error Handling
 
 ```text
 /USE SKILL: gmail-x-gpt-5x-skill
+/USE SUB-SKILL: [skills/idNN-skill-domain-workflow/SKILL.md]
 /USE PROMPT: [path/to/prompt.md]
 
 Task:
