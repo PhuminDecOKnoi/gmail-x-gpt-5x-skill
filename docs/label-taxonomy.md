@@ -20,6 +20,16 @@ This document defines the standard labels used by Gmail X GPT 5.x SKILL.
 | `13_Security-Account` | Security | Login, OTP, password, verification, account security | High-priority review |
 | `99_Archive-LowPriority` | Low priority | No specific label fits and message appears low priority | Do not use when a specific label applies |
 
+## Classification Priority
+
+Use this order when a message appears ambiguous:
+
+1. Security and account risk: `13_Security-Account`.
+2. Financial, receipt, tax, or billing evidence: `03_Finance-Bank`, `12_Receipt-Tax-Invoice`, `04_Bills-Utility`.
+3. Work, GitHub, professional HR, education, research, and AI/SaaS categories.
+4. Social and promotional categories.
+5. `99_Archive-LowPriority` only when no specific label fits.
+
 ## Multi-Label Rule
 
 Apply multiple labels when a message clearly belongs to multiple categories.
@@ -33,3 +43,11 @@ Examples:
 | LinkedIn HR job alert | `06_HR-Professional`, `07_Social-LinkedIn` |
 | GitHub Copilot billing receipt | `01_Work-GitHub`, `08_AI-SaaS`, `12_Receipt-Tax-Invoice` |
 
+## Ambiguity Rule
+
+If the subject or snippet is insufficient:
+
+1. Inspect limited body context.
+2. Prefer a specific label when evidence is clear.
+3. Report ambiguous messages separately when classification is uncertain.
+4. Do not use `99_Archive-LowPriority` for security, finance, receipts, education, HR, GitHub, or contract-related messages.
