@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.3.0 - 2026-08-02
+
+Rebuilt the repository front page and added visual title assets.
+
+Added:
+
+- `assets/readme-title-banner.svg`.
+
+Improved:
+
+- README executive overview, navigation, quick start, workflow map, safety gates, repository map, and examples section.
+- README top-of-file title banner for stronger GitHub presentation.
+
 ## v1.2.0 - 2026-08-02
 
 Added the first modular sub-skill for ranked sender cleanup.
