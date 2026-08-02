@@ -6,10 +6,48 @@ This document defines standard Gmail workflows for this repository.
 
 | Workflow | Trigger phrase | Write action allowed by default | Primary prompt |
 |---|---|---|---|
+| Gmail Category Count | "แสดงจำนวนตามหัวข้ออีเมล", "Primary, Promotions, Social, Updates, Forums" | None | `prompts/gmail-category-count.prompt.md` |
 | New Message Labeling | "check new messages", "ตรวจเมลใหม่" | Apply labels only | `prompts/gmail-new-message-auto-labeler.prompt.md` |
 | Inbox Sender Ranking | "แยกผู้ส่งใน Inbox", "rank sender" | None | `prompts/gmail-ranked-sender-cleanup.prompt.md` |
 | Keep Selected Ranks | "เก็บลำดับ X Y Z นอกนั้นลบ" | Move non-kept Inbox messages to Trash after authorization | `skills/id01-skill-email-sender-cleanup/SKILL.md` and `prompts/gmail-ranked-sender-cleanup.prompt.md` |
 | Contract Review | "contract", "agreement", "สัญญา", "invoice" | None | `prompts/gmail-contract-review.prompt.md` |
+
+## Workflow 0: Gmail Category Count
+
+Use this when the user asks:
+
+> ช่วยแสดง จำนวน รายการตาม หัวข้อ อีเมล [หัวข้อหมวด Gmail: Primary, Promotions, Social, Updates, Forums]
+
+Steps:
+
+1. Use Gmail category or label metadata when available.
+2. Map visible Gmail headings to system labels.
+3. Count total messages, unread messages, and threads when available.
+4. Add the total across the five requested categories.
+5. Do not open message bodies unless metadata counts are unavailable.
+6. Do not change mailbox state.
+
+System label mapping:
+
+| หัวข้อ Gmail | Gmail Label |
+|---|---|
+| Primary | `CATEGORY_PERSONAL` |
+| Promotions | `CATEGORY_PROMOTIONS` |
+| Social | `CATEGORY_SOCIAL` |
+| Updates | `CATEGORY_UPDATES` |
+| Forums | `CATEGORY_FORUMS` |
+
+Expected output:
+
+| หัวข้อ Gmail | Gmail Label | จำนวนอีเมล | ยังไม่ได้อ่าน | จำนวน Thread |
+|---|---|---:|---:|---:|
+| Primary | `CATEGORY_PERSONAL` | X | X | X |
+| Promotions | `CATEGORY_PROMOTIONS` | X | X | X |
+| Social | `CATEGORY_SOCIAL` | X | X | X |
+| Updates | `CATEGORY_UPDATES` | X | X | X |
+| Forums | `CATEGORY_FORUMS` | X | X | X |
+
+End with a safety statement confirming read-only count and no delete, move, archive, send, draft, or read-status change.
 
 ## Workflow 1: New Message Labeling
 
