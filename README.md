@@ -16,7 +16,7 @@ Core principle:
 |---|---|---|
 | New message auto-labeling | Check new Inbox and Spam messages, then apply existing labels | [prompts/gmail-new-message-auto-labeler.prompt.md](prompts/gmail-new-message-auto-labeler.prompt.md) |
 | Inbox manual labeling | Classify a selected Gmail scope using the standard label taxonomy | [prompts/gmail-inbox-labeler.prompt.md](prompts/gmail-inbox-labeler.prompt.md) |
-| Ranked sender cleanup | Rank Inbox senders by count and keep only selected ranks after confirmation | [prompts/gmail-ranked-sender-cleanup.prompt.md](prompts/gmail-ranked-sender-cleanup.prompt.md) |
+| Ranked sender cleanup | Rank Inbox senders by count and keep only selected ranks after confirmation | [skills/id01-skill-email-sender-cleanup/SKILL.md](skills/id01-skill-email-sender-cleanup/SKILL.md) and [prompts/gmail-ranked-sender-cleanup.prompt.md](prompts/gmail-ranked-sender-cleanup.prompt.md) |
 | Contract review | Find contract, agreement, invoice, receipt, and service-term messages | [prompts/gmail-contract-review.prompt.md](prompts/gmail-contract-review.prompt.md) |
 | Operational control | Define safe actions, restricted actions, fallback, and verification rules | [docs/operations.md](docs/operations.md) |
 
@@ -36,6 +36,13 @@ Core principle:
 │   ├── repository-standard.md
 │   ├── safety-rules.md
 │   └── workflows.md
+├── skills/
+│   └── id01-skill-email-sender-cleanup/
+│       ├── SKILL.md
+│       ├── examples/
+│       │   └── keep-ranks-run.md
+│       └── references/
+│           └── sender-ranking-standard.md
 ├── examples/
 │   ├── keep-rank-run.md
 │   └── new-message-auto-labeler-run.md
@@ -54,9 +61,16 @@ Use the repo in this order:
 
 1. Read [SKILL.md](SKILL.md) for the governing workflow and action boundary.
 2. Use [docs/label-taxonomy.md](docs/label-taxonomy.md) to classify messages.
-3. Select the correct prompt from [prompts/](prompts/).
-4. Check [docs/safety-rules.md](docs/safety-rules.md) before any Gmail write action.
-5. Use [examples/](examples/) as copy-paste run patterns.
+3. Use the relevant sub-skill in [skills/](skills/) when the workflow needs stricter execution control.
+4. Select the correct prompt from [prompts/](prompts/).
+5. Check [docs/safety-rules.md](docs/safety-rules.md) before any Gmail write action.
+6. Use [examples/](examples/) as copy-paste run patterns.
+
+## Sub-Skill Registry
+
+| ID | Sub-skill | Purpose | Main prompt |
+|---|---|---|---|
+| `id01` | [id01-skill-email-sender-cleanup](skills/id01-skill-email-sender-cleanup/SKILL.md) | Rank Inbox senders, keep selected ranks, and move non-kept Inbox messages to Trash with a frozen snapshot | [gmail-ranked-sender-cleanup.prompt.md](prompts/gmail-ranked-sender-cleanup.prompt.md) |
 
 ## Gmail Label Taxonomy
 
@@ -101,4 +115,4 @@ See [docs/prompt-patterns.md](docs/prompt-patterns.md) for the complete pattern 
 
 ## Version
 
-Current version: `v1.1.0-standard-structure`
+Current version: `v1.2.0-sub-skill-id01`
