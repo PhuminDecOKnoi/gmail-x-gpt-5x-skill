@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.3.3 - 2026-08-02
+
+Added author/compiler attribution and international non-commercial licensing.
+
+Improved:
+
+- Added `Author And License` to `README.md`.
+- Changed the README license badge from MIT to `CC BY-NC 4.0`.
+- Replaced the MIT `LICENSE` text with a Creative Commons Attribution-NonCommercial 4.0 International notice.
+
 ## v1.3.2 - 2026-08-02
 
 Expanded the README into a repository-level Skill Hub.
